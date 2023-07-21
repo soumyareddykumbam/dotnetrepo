@@ -19,7 +19,6 @@ steps:
   displayName: 'NuGet restore'
   inputs:
     restoreSolution: '$(Parameters.solution)'
-steps:
 - task: VSBuild@1
   displayName: 'Build solution'
   inputs:
