@@ -7,8 +7,11 @@ trigger:
 - master
 
 pool:
-
-  vmImage: windows-latest
+  name: Azure Pipelines
+  demands:
+  - msbuild
+  - visualstudio
+  - vstest
 
 steps:
 - task: NuGetToolInstaller@0
