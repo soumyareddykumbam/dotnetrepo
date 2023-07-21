@@ -19,10 +19,11 @@ steps:
   displayName: 'NuGet restore'
   inputs:
     restoreSolution: '$(Parameters.solution)'
+steps:
 - task: VSBuild@1
   displayName: 'Build solution'
   inputs:
-    solution: '$(Parameters.solution)'
+    solution: WebApplication1/WebApplication1.sln
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
