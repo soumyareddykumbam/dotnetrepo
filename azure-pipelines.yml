@@ -15,12 +15,10 @@ steps:
   displayName: 'Use NuGet 4.4.1'
   inputs:
     versionSpec: 4.4.1
-steps:
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
   inputs:
     restoreSolution: '$(Parameters.solution)'
-steps:
 - task: VSBuild@1
   displayName: 'Build solution'
   inputs:
@@ -28,7 +26,6 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
-steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
