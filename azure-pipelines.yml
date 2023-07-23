@@ -17,17 +17,15 @@ steps:
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
   inputs:
-    restoreSolution: 'WebApplication1/WebApplication1.sln'
+    restoreSolution: '**\*.sln'
 - task: VSBuild@1
   displayName: 'Build solution'
   inputs:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactstagingdirectory)\\"'
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
-
 - task: PublishBuildArtifacts@1
   inputs:
-  solution: MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform="Any CPU"
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
