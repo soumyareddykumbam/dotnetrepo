@@ -27,6 +27,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
+  solution: MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform="Any CPU"
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
